@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:21:33 by aldubar           #+#    #+#             */
-/*   Updated: 2021/07/16 19:02:55 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/07/18 11:12:12 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 	}
 	if (line)
 	{
-		printf("%s\n", line);
+//		printf("%s\n", line);
 		free(line);
 		line = NULL;
 	}

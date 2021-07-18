@@ -2,6 +2,10 @@
 
 [ -z $1 ] && { echo "Usage: bash test.sh [file.c]"; exit 1; }
 
+
+echo -e "\nChecking inter..."
+
+
 clang -Wall -Wextra -Werror "$1" -o inter
 
 good=0

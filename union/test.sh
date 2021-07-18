@@ -2,6 +2,8 @@
 
 [ -z $1 ] && { echo "Usage: ./test.sh [file.c]"; exit 1; }
 
+echo "Checking union..."
+
 clang -Wall -Wextra -Werror "$1" -o union
 
 good=0
