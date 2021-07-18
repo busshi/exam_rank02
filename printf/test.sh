@@ -1,7 +1,16 @@
-gcc -Wall -Werror -Wextra ft_printf.c main.c -o ft_printf
-./ft_printf > yy
-cat -e yy > y
-gcc -Wall -Werror -Wextra -D REAL main.c -o printf
-./printf | cat -e > r
-diff -y --suppress-common-lines r y
-rm -rf yy y r ft_printf printf
+#!/bin/bash
+
+echo -e "\nChecking ft_printf..."
+
+DIR="printf-test-it-yourself"
+
+clang -Wall -Wextra -Werror ft_printf.c ${DIR}/main_ptys.c ${DIR}/ptys.c -o printf
+
+ko=0
+
+./printf
+[[ $? -ne 0 ]] && { ko=$(( $ko + 1)); echo "ft_printf: KO"; } || echo "ft_printf: OK"
+
+rm -rf printf logs
+
+[[ $ko -eq 0 ]] && exit 0 || exit 1
