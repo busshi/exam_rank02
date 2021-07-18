@@ -1,0 +1,4 @@
+libftprintf.a
+*.o
+a.out
+test.c
