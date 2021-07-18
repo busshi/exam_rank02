@@ -9,7 +9,7 @@ cat -e yours_.res > yours.res
 cat -e < get_next_line.c > original.res
 diff -y --suppress-common-line original.res yours.res
 ko=0
-[[ $? -ne 0 ]] && ko=$(( $ko + 1 )) || echo "GNL: OK"
+[[ $? -ne 0 ]] && { ko=$(( $ko + 1 )); echo "GNL:KO"; } || echo "GNL: OK"
 
 rm -rf original.res yours_.res yours.res get_next_line
 
