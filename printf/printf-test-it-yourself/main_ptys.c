@@ -18,6 +18,10 @@ int	main(void)
 	ASSERT("conv_s4", printf("S4 : %1.2s\n", "test"));
 	ASSERT("conv_s5", printf("S5 : %5.s\n", "test"));
 	ASSERT("conv_s6", printf("S6 : %.6s\n", "test"));
+	ASSERT("conv_s7", printf("S7 : %.6s\n", "test de longueur"));
+	ASSERT("conv_s8", printf("S8 : %s\n", NULL));
+	ASSERT("conv_s9", printf("S9 : %5s\n", NULL));
+	ASSERT("conv_s10", printf("S10 : %.6s\n", NULL));
 
 	ASSERT("conv_d1", printf("%d\n", 4));
 	ASSERT("conv_d2", printf("%d\n", 42));
@@ -42,13 +46,11 @@ int	main(void)
 	ASSERT("conv_x6", printf("%x %x\n", 2147483647, 147483647));
 	ASSERT("conv_x7", printf("%1.1x %1.1x\n", 2147483647, 147483647));
 	ASSERT("conv_x8", printf("%13.x %13.x\n", 752086341, 52086341));
-	//ASSERT("conv_x9: INT_MIN", printf("%x %13.x\n", INT_MIN, INT_MIN));
-	//ASSERT("conv_x11: INT_MAX + 1", printf("%x\n", INT_MAX + 1));
-	//ASSERT("conv_x11: -8000", printf("%x\n", -8000));
+	ASSERT("conv_x9:UINT_MAX", printf("%x %13.x %x %13.x\n", UINT_MAX, UINT_MAX, UINT_MAX + 1, UINT_MAX + 1));
 	ASSERT("x_UINT_MAX", printf("%x\n", UINT_MAX));
 	ASSERT("x_UINT_MIN", printf("%x\n", 0));
 
-//	ASSERT("double pourcentage", printf("%%"));
+	ASSERT("double_pourcentage", printf("%%"));
 	//ASSERT("%", printf("%"));
 	//ASSERT("%5", printf("%5"));
 	//ASSERT("%05", printf("%05"));
