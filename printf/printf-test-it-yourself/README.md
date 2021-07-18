@@ -1,4 +1,6 @@
-# printf test it yourself (PTYS) from Aurélien Brabant: https://github.com/aurelien-brabant/printf-test-it-yourself/
+# printf test it yourself (PTYS)
+
+from Aurélien Brabant: https://github.com/aurelien-brabant/printf-test-it-yourself/
 
 `printf test it yourself` or `PTYS` is a dead simple framework designed to **help** 42 students
 that may want to test their `ft_printf` project easily in C.

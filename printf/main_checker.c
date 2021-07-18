@@ -1,17 +1,15 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int
-	ft_printf(char const *format, ...);
+int	ft_printf(char const *fmt, ...);
 
-#ifndef REAL
+#ifndef PRINTF
 # define F	r += ft_printf
 #else
 # define F	r += printf
 #endif
 
-int
-	main(void)
+int	main(void)
 {
 	int	r;
 
@@ -95,4 +93,5 @@ int
 	F("s4w4p ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	printf("written: %d\n", r);
+	return (0);
 }
