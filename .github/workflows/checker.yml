@@ -7,5 +7,5 @@ jobs:
     name: checker
     steps:
     - uses: actions/checkout@v2
-    - run: docker build -t ps_checker .github/checker
-    - run: docker run -v $PWD:/.github/ps_checker/ checker
+    - run: docker build -t checker .github/checker
+    - run: docker run -v $PWD:/.github/checker/ checker
