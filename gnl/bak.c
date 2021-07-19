@@ -1,22 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 17:03:12 by aldubar           #+#    #+#             */
-/*   Updated: 2021/07/15 22:46:32 by aldubar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
-/*
-size_t	ft_strlen(char *s)
+
+int	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -24,10 +11,10 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, const char *s2)
 {
+	int	i;
 	char	*join;
-	int		i;
 
 	join = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 2));
 	if (!join)
@@ -47,42 +34,51 @@ char	*ft_strjoin(char *s1, char *s2)
 
 int	get_next_line(char **line)
 {
-	int		ret;
 	char	buf[2];
+	int	ret;
 
 	ret = 0;
 	buf[1] = '\0';
-	*line = (char *)malloc(sizeof(char));
+	*line = malloc(sizeof(char));
 	if (!*line)
 		return (-1);
 	*line[0] = '\0';
-	while ((ret = read(0, buf, 1)) == 1)
+	while ((ret = read(STDIN_FILENO, &buf, 1)) == 1)
 	{
 		if (buf[0] == '\n')
 			break ;
 		else
 			*line = ft_strjoin(*line, buf);
-		if (*line == NULL)
+		if (!*line)
 		{
 			free(*line);
 			return (-1);
 		}
 	}
 	if (ret == -1 && *line)
+	{
 		free(*line);
+		*line = NULL;
+	}
 	return (ret);
 }
-*/
+/*
 int	get_next_line(char **line)
 {
 	int	ret;
-	char	buf;
 	int	i;
+	char	buf;
 
+	ret = 0;
 	i = 0;
+	buf = 0;
 	*line = malloc(100000);
-	while ((ret = read(0, &buf, 1)) > 0 && buf != '\n')
+	if (!(*line))
+		return (-1);
+	if (read(STDIN_FILENO, &buf, 0) < 0)
+		return (-1);
+	while ((ret = read(STDIN_FILENO, &buf, 1) == 1) && buf != '\n')
 		(*line)[i++] = buf;
 	(*line)[i] = '\0';
 	return (ret);
-}
+}*/
