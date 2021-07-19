@@ -299,7 +299,8 @@ int	ft_printf(const char *s, ...)
 			ret++;
 			write(STDOUT_FILENO, &s[i], 1);
 		}
-		i++;
+		if (s[i])
+			i++;
 	}
 	va_end(param);
 	free(flags);
