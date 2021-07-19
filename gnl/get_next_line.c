@@ -11,15 +11,15 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int	i;
 	char	*join;
 
+	i = 0;
 	join = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 2));
 	if (!join)
 		return (NULL);
-	i = 0;
 	while (s1[i])
 	{
 		join[i] = s1[i];
@@ -30,29 +30,29 @@ char	*ft_strjoin(char *s1, const char *s2)
 	free(s1);
 	s1 = NULL;
 	return (join);
+
 }
 
 int	get_next_line(char **line)
 {
-	char	buf[2];
 	int	ret;
+	char	buf[2];
 
-	ret = 0;
 	buf[1] = '\0';
+	ret = 0;
 	*line = malloc(sizeof(char));
-	if (!*line)
+	if (!(*line))
 		return (-1);
 	*line[0] = '\0';
-	while ((ret = read(STDIN_FILENO, &buf, 1)) == 1)
+	while ((ret = read(STDIN_FILENO, buf, 1)) == 1)
 	{
 		if (buf[0] == '\n')
 			break ;
 		else
-			*line = ft_strjoin(*line, buf);
-		if (!*line)
 		{
-			free(*line);
-			return (-1);
+			*line = ft_strjoin(*line, buf);
+			if (!(*line))
+				return (-1);
 		}
 	}
 	if (ret == -1 && *line)
@@ -62,22 +62,23 @@ int	get_next_line(char **line)
 	}
 	return (ret);
 }
+
 /*
 int	get_next_line(char **line)
 {
-	int	ret;
 	int	i;
+	int	ret;
 	char	buf;
 
-	ret = 0;
 	i = 0;
+	ret = 0;
 	buf = 0;
-	*line = malloc(100000);
+	*line = malloc(400000);
 	if (!(*line))
 		return (-1);
 	if (read(STDIN_FILENO, &buf, 0) < 0)
 		return (-1);
-	while ((ret = read(STDIN_FILENO, &buf, 1) == 1) && buf != '\n')
+	while ((ret = read(STDIN_FILENO, &buf, 1)) == 1 && buf != '\n')
 		(*line)[i++] = buf;
 	(*line)[i] = '\0';
 	return (ret);

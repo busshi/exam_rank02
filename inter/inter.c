@@ -2,12 +2,15 @@
 
 void	inter(const char *s1, const char *s2)
 {
-	int	alpha[256];
 	int	i;
+	int	alpha[256];
 
 	i = 0;
 	while (i < 256)
-		alpha[i++] = 0;
+	{
+		alpha[i] = 0;
+		i++;
+	}
 	i = 0;
 	while (s2[i])
 	{
