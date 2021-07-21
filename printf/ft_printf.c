@@ -192,10 +192,7 @@ int	print_s(va_list param, t_flag *flags)
 	if (flags->width > len)
 		i += ft_putnchar(' ', flags->width - len);
 	while (j < len)
-	{
-		write(STDOUT_FILENO, &s[j], 1);
-		j++;
-	}
+		j += ft_putnchar(s[j], 1);
 	return (i + j);
 }
 
@@ -222,10 +219,7 @@ int	print_d(va_list param, t_flag *flags)
 	if (flags->width > len)
 		i += ft_putnchar(' ', flags->width - len);
 	if (n < 0)
-	{
-		write(STDOUT_FILENO, "-", 1);
-		i++;
-	}
+		i += ft_putnchar('-', 1);
 	if (flags->precision > len_d)
 		i += ft_putnchar('0', flags->precision - len_d);
 	ft_putnbr(n);
@@ -295,10 +289,7 @@ int	ft_printf(const char *s, ...)
 			ret += check_conv(param, flags, s + i);
 		}
 		else
-		{
-			ret++;
-			write(STDOUT_FILENO, &s[i], 1);
-		}
+			ret += ft_putnchar(s[i], 1);
 		if (s[i])
 			i++;
 	}

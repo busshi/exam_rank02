@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <unistd.h>
-
+/*
 int	ft_strlen(char *s)
 {
 	int	i;
@@ -13,13 +13,17 @@ int	ft_strlen(char *s)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	i;
 	char	*join;
+	int	i;
 
 	i = 0;
 	join = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 2));
 	if (!join)
+	{
+		free(s1);
+		s1 = NULL;
 		return (NULL);
+	}
 	while (s1[i])
 	{
 		join[i] = s1[i];
@@ -30,7 +34,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	s1 = NULL;
 	return (join);
-
 }
 
 int	get_next_line(char **line)
@@ -44,6 +47,8 @@ int	get_next_line(char **line)
 	if (!(*line))
 		return (-1);
 	*line[0] = '\0';
+	if (read(STDIN_FILENO, buf, 0) < 0)
+		return (-1);
 	while ((ret = read(STDIN_FILENO, buf, 1)) == 1)
 	{
 		if (buf[0] == '\n')
@@ -62,8 +67,7 @@ int	get_next_line(char **line)
 	}
 	return (ret);
 }
-
-/*
+*/
 int	get_next_line(char **line)
 {
 	int	i;
@@ -73,7 +77,7 @@ int	get_next_line(char **line)
 	i = 0;
 	ret = 0;
 	buf = 0;
-	*line = malloc(400000);
+	*line = malloc(4000000);
 	if (!(*line))
 		return (-1);
 	if (read(STDIN_FILENO, &buf, 0) < 0)
@@ -82,4 +86,4 @@ int	get_next_line(char **line)
 		(*line)[i++] = buf;
 	(*line)[i] = '\0';
 	return (ret);
-}*/
+}
