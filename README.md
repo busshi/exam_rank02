@@ -3,7 +3,7 @@
 [![aldubar's 42Project Score](https://badge42.herokuapp.com/api/project/aldubar/Exam%20Rank%2002)](https://github.com/JaeSeoKim/badge42)
 
 
---- EXAM RANK02 ---
+## EXAM RANK_02
 
 Train yourself to the exam_rank02 :
 - union
